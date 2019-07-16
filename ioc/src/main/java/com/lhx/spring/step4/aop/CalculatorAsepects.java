@@ -1,5 +1,6 @@
 package com.lhx.spring.step4.aop;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
@@ -21,18 +22,18 @@ public class CalculatorAsepects {
     }
 
     @After("pointCut()")
-    public void logAfter() {
-        System.out.println("logAfter.... ");
+    public void logAfter(JoinPoint joinpoint) {
+        System.out.println("logAfter.... " + joinpoint.getSignature().getName() + " 参数" + joinpoint.getArgs());
     }
 
-    @AfterReturning("pointCut()")
-    public void logAfterReturning() {
-        System.out.println("logAfterReturning.... ");
+    @AfterReturning(value = "pointCut()", returning = "result")
+    public void logAfterReturning(Object result) {
+        System.out.println("logAfterReturning.... " + result);
     }
 
-    @AfterThrowing("pointCut()")
-    public void logAfterThrowing() {
-        System.out.println("logAfterThrowing.... ");
+    @AfterThrowing(value = "pointCut()", throwing = "exception")
+    public void logAfterThrowing(JoinPoint joinpoint, Exception exception) {
+        System.out.println("logAfterThrowing.... " + exception.getMessage());
     }
 
     @Around("pointCut()")

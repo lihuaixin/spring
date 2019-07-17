@@ -13,8 +13,8 @@
  * AbstractAutowireCapableBeanFactory.populateBean()bean属性赋值--->AbstractAutowireCapableBeanFactory.initializeBean()方法初始化并
  * --->applyBeanPostProcessorsBeforeInitialization() 前置处理 执行initMethod方法--->applyBeanPostProcessorsAfterInitialization() 后置处理
  * <p>4：由于Calculator 的bean被AOP 代理了，所以代理的代码主要在applyBeanPostProcessorsAfterInitialization()中，
- * 该方法实际是从beanFactory中获取所有的BeanPostProcessors并执行后置处理方法，AnnotationAwareAspectJAutoProxyCreator父类AbstractAutoProxyCreator.postProcessAfterInitialization()
- * 方法，该方法中调用wrapIfNecessary()去获取CGLIB代理的bean
+ * 该方法实际是从beanFactory中获取所有的BeanPostProcessors并执行后置处理方法，AnnotationAwareAspectJAutoProxyCreator父类
+ * AbstractAutoProxyCreator.postProcessAfterInitialization() 方法，该方法中调用wrapIfNecessary()通过ProxyFactory.getProxy()去获取CglibAopProxy.getProxy()代理的bean
  * Created by lihuaixin on 2019/7/16 14:06
  *
  * @see @Before 运行之前 前置通知

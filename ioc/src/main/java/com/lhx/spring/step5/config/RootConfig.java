@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.beans.PropertyVetoException;
 
@@ -13,6 +16,7 @@ import java.beans.PropertyVetoException;
  */
 @Configuration
 @ComponentScan(value = {"com.lhx.spring.step5"})
+@EnableTransactionManagement
 public class RootConfig {
 
     @Bean
@@ -28,6 +32,11 @@ public class RootConfig {
     @Bean
     JdbcTemplate jdbcTemplate() throws PropertyVetoException {
         return new JdbcTemplate(dataSource());
+    }
+
+    @Bean
+    public PlatformTransactionManager platformTransactionManager() throws PropertyVetoException {
+        return new DataSourceTransactionManager(dataSource());
     }
 
 }

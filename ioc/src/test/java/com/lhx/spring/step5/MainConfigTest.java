@@ -23,8 +23,11 @@ public class MainConfigTest {
     public void test02() {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
         System.out.println("IOC容器创建完成");
-        OrderService bean = applicationContext.getBean(OrderService.class);
-        bean.addOrder2();
+        try {
+            OrderService bean = applicationContext.getBean(OrderService.class);
+            bean.addOrder2();
+        } catch (Exception ignored) {
+        }
         applicationContext.close();
     }
 }

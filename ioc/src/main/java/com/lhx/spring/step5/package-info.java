@@ -2,8 +2,8 @@
  * Tx 事务讲解
  * @EnableTransactionManagement
  * TransactionManagementConfigurationSelector
- *      AutoProxyRegistrar
- *          InfrastructureAdvisorAutoProxyCreator
+ *      AutoProxyRegistrar implements ImportBeanDefinitionRegistrar
+ *          注册了一个RootBeanDefinition InfrastructureAdvisorAutoProxyCreator
  *      ProxyTransactionManagementConfiguration
  *          AnnotationTransactionAttributeSource
  *              SpringTransactionAnnotationParser

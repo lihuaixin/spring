@@ -18,7 +18,15 @@
  * 通过ProxyFactory.getProxy()去获取CglibAopProxy.getProxy()代理的bean
  *
  * <p>5:当执行{@link com.lhx.spring.step4.aop.Calculator#div(int, int)} 方法时会执行{@link org.springframework.aop.framework.CglibAopProxy}
- * 内部类{DynamicAdvisedInterceptor#interceptor()}方法
+ * 内部类{DynamicAdvisedInterceptor#interceptor()}方法,执行this.advised.getInterceptorsAndDynamicInterceptionAdvice(method, targetClass)去获取代理链，
+ * （其实链是一个List ，里面的内容根据Advisor切面，去生成对应的MethodInterceptor对象 如：
+ * {@link org.springframework.aop.aspectj.AspectJAfterThrowingAdvice
+ * ,org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor
+ * ,org.springframework.aop.interceptor.ExposeInvocationInterceptor
+ * ,org.springframework.aop.aspectj.AspectJAfterAdvice
+ * ,org.springframework.aop.aspectj.AspectJAroundAdvice,org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor
+ * }并放入到list 链中）然后retVal = new CglibMethodInvocation(proxy, target, method, args, targetClass, list, methodProxy).proceed();
+ * 执行CalculatorAsepects切面的具体代码
  *
  * Created by lihuaixin on 2019/7/16 14:06
  *

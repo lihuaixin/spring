@@ -16,6 +16,10 @@
  * 该方法实际是从beanFactory中获取所有的BeanPostProcessors并执行后置处理方法，AnnotationAwareAspectJAutoProxyCreator父类
  * AbstractAutoProxyCreator.postProcessAfterInitialization() 方法，该方法中调用wrapIfNecessary()
  * 通过ProxyFactory.getProxy()去获取CglibAopProxy.getProxy()代理的bean
+ *
+ * <p>5:当执行{@link com.lhx.spring.step4.aop.Calculator#div(int, int)} 方法时会执行{@link org.springframework.aop.framework.CglibAopProxy}
+ * 内部类{DynamicAdvisedInterceptor#interceptor()}方法
+ *
  * Created by lihuaixin on 2019/7/16 14:06
  *
  * @see @Before 运行之前 前置通知

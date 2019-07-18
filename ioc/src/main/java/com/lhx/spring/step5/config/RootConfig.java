@@ -22,9 +22,9 @@ public class RootConfig {
     @Bean
     public ComboPooledDataSource dataSource() throws PropertyVetoException {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
-        comboPooledDataSource.setUser("");
-        comboPooledDataSource.setPassword("");
-        comboPooledDataSource.setJdbcUrl("");
+        comboPooledDataSource.setUser("eCityArcTest");
+        comboPooledDataSource.setPassword("rickControl@test");
+        comboPooledDataSource.setJdbcUrl("jdbc:mysql://192.168.112.31:3306/test");
         comboPooledDataSource.setDriverClass("com.mysql.jdbc.Driver");
         return comboPooledDataSource;
     }

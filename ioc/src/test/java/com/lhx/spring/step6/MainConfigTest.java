@@ -1,6 +1,6 @@
 package com.lhx.spring.step6;
 
-import com.lhx.spring.step5.config.RootConfig;
+import com.lhx.spring.step6.config.RootConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

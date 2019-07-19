@@ -1,5 +1,5 @@
 /**
- * Tx 事务讲解
+ * Tx 事务讲解 跟AOP密切相关
  * @EnableTransactionManagement
  * TransactionManagementConfigurationSelector
  *      AutoProxyRegistrar implements ImportBeanDefinitionRegistrar
@@ -8,6 +8,6 @@
  *          AnnotationTransactionAttributeSource
  *              SpringTransactionAnnotationParser
  *          TransactionInterceptor
- *              TransactionAspectSupport.invokeWithinTransaction()
+ *              TransactionAspectSupport.invokeWithinTransaction() 执行事务的开始，提交，回滚等操作
  */
 package com.lhx.spring.step5;

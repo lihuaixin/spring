@@ -17,7 +17,7 @@ public class JamesBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
         //所有Bean的定义，已经加载到beanFactory，但是bean实例还没创建
         int beanDefinitionCount = beanFactory.getBeanDefinitionCount();
         String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
-        System.out.println("beanDefinitionCount:" + beanDefinitionCount);
-        System.out.println("beanDefinitionNames:" + Arrays.toString(beanDefinitionNames));
+        System.out.println("当前beanDefinitionCount:" + beanDefinitionCount);
+        System.out.println("当前beanDefinitionNames:" + Arrays.toString(beanDefinitionNames));
     }
 }

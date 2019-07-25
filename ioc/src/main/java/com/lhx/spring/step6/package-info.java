@@ -1,6 +1,7 @@
 /**
  * {@link org.springframework.beans.factory.config.BeanFactoryPostProcessor} beanFactory 后置处理器
  * {@link org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor } 执行时机在BeanFactoryPostProcessor 之前执行
+ * 源码：
  * refresh();
  * invokeBeanFactoryPostProcessors(beanFactory);
  *      PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory, getBeanFactoryPostProcessors());

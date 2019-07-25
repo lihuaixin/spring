@@ -3,7 +3,7 @@
  * 1.容器启动加载配置类
  * 2.调用容器AbstractApplicationContext.refresh()
  * AbstractApplicationContext.finishBeanFactoryInitialization() 创建单实例bean
- * AbstractBeanFactory.preInstantiateSingletons()--AbstractBeanFactory.getBean()-->AbstractBeanFactory.doCreateBean()--->
+ * AbstractBeanFactory.preInstantiateSingletons()-->AbstractBeanFactory.getBean()-->AbstractBeanFactory.doCreateBean()--->
  * AbstractAutowireCapableBeanFactory.createBean()--->AbstractAutowireCapableBeanFactory.doCreateBean()--->
  * AbstractAutowireCapableBeanFactory.createBeanInstance() beanWrapper对象被创建--->
  * AbstractAutowireCapableBeanFactory.populateBean()bean属性赋值--->AbstractAutowireCapableBeanFactory.initializeBean()方法初始化并

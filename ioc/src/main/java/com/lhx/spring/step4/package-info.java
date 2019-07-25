@@ -1,5 +1,5 @@
 /**
- * AOP 讲解
+ * AOP 源码讲解
  * <p>1：{@link @EnableAspectJAutoProxy} @import 了AspectJAutoProxyRegistrar类， 此类是一个ImportBeanDefinitionRegistrar注册器，注册了一个
  * beanname 为 org.springframework.aop.config.internalAutoProxyCreator=AnnotationAwareAspectJAutoProxyCreator RootBeanDefinition
  * <p>2：IOC容器启动时调用registerBeanPostProcessors 注册系统的所有BeanPostProcessors,在注册bean时从beanFactory中去获取bean的实例，

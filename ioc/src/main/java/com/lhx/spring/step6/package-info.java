@@ -71,9 +71,26 @@
  *      从IOC容器中拿到所有的ApplicationListener
  *      getApplicationEventMulticaster().multicastEvent(earlyEvent); 进行事件派发
  *
- *  11.finishBeanFactoryInitialization(beanFactory);
+ *  11.finishBeanFactoryInitialization(beanFactory); 创建非懒加载单实例bean
+ *      beanFactory.preInstantiateSingletons(); 创建非懒加载单实例bean
+ *          getMergedLocalBeanDefinition(beanName); 获取bean的定义信息依次进行创建和初始化
+ *          getBean()-->doGetBean()-->getSingleton(beanname) 从缓存Map中获取bean，如果这个bean第二次来拿，就直接从缓存map中拿
+ *          markBeanAsCreated(beanName);标记当前bean已经被创建this.alreadyCreated.add(beanName);
+ *          final RootBeanDefinition mbd = getMergedLocalBeanDefinition(beanName);
+ *          mbd.getDependsOn(); 获取当前bean依赖的其他bean，如果存在使用getBean()方法从容器中拿来
+ *          然后判断mdb是不是单实例bean如果是调用AbstractAutowireCapableBeanFactory#createBean(beanname, mbd, args)创建bean
+ *          Object bean = resolveBeforeInstantiation(beanName, mbdToUse);创建bean尝试让我们的beanPostProcessor返回一个代理对象，并返回bean否者
+ *          Object beanInstance = doCreateBean(beanName, mbdToUse, args);创建bean
+ *          populateBean(beanName, mbd, instanceWrapper); bean属性赋值，调用后置处理器方法对bean进行定制处理，然后设置属性值
+ * 			exposedObject = initializeBean(beanName, exposedObject, mbd); 初始化bena，
+ * 		    	首先执行实现了Aware接口的Aware方法，然后执行bean的前置处理方法，在执行bean 的initMethod方法，然后在执行bean的后置处理方法，AOP动态代理争抢的入口就在后置处理
  *
  * 	12.finishRefresh();
+ * 		clearResourceCaches();清除context 资源缓存
+ * 		initLifecycleProcessor(); 为此context初始化生命周期处理器。
+ * 		getLifecycleProcessor().onRefresh(); 刷新传播到生命周期处理器。
+ * 		publishEvent(new ContextRefreshedEvent(this)); 发布ContextRefreshedEvent 事件
+ * 		LiveBeansView.registerApplicationContext(this); 注册context到 Set<ConfigurableApplicationContext> applicationContexts 中
  *
  **/
 package com.lhx.spring.step6;

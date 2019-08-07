@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/ioc_aop/pom.xml" />
         <option value="$PROJECT_DIR$/servelet/pom.xml" />
         <option value="$PROJECT_DIR$/mvc/pom.xml" />
+        <option value="$PROJECT_DIR$/mybaties/pom.xml" />
       </list>
     </option>
   </component>

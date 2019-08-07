@@ -8,14 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ioc_aop" />
         <module name="mvc" />
-        <module name="mybaties" />
+        <module name="mybatis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ioc_aop" target="1.5" />
       <module name="mvc" target="1.8" />
       <module name="mvc_servlet" target="1.5" />
-      <module name="mybaties" target="1.5" />
+      <module name="mybatis" target="1.5" />
       <module name="servlet_mvc" target="1.5" />
     </bytecodeTargetLevel>
   </component>

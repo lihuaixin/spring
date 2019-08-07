@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/servelet/pom.xml" />
         <option value="$PROJECT_DIR$/mvc/pom.xml" />
         <option value="$PROJECT_DIR$/mybaties/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis/pom.xml" />
       </list>
     </option>
   </component>

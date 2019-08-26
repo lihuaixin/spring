@@ -1,4 +1,6 @@
-package com.lhx.proxy;
+package com.lhx.proxy.jdk;
+
+import com.lhx.proxy.User;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

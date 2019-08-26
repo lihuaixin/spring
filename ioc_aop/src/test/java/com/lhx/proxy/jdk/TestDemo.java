@@ -1,5 +1,6 @@
-package com.lhx.proxy;
+package com.lhx.proxy.jdk;
 
+import com.lhx.proxy.User;
 import org.junit.Test;
 
 import java.lang.reflect.Proxy;

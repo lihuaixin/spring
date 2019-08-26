@@ -15,13 +15,13 @@ public class TestDemo {
         user.setName("zhangsan");
         UserService us = new UserServiceImpl();
         UserServiceInterceptor userServiceInterceptor = new UserServiceInterceptor(us);
-        UserService userServiceProxy = (UserService) Proxy.newProxyInstance(us.getClass().getClassLoader(), us.getClass().getInterfaces(), userServiceInterceptor);
+        UserService proxyInstance = (UserService) Proxy.newProxyInstance(us.getClass().getClassLoader(), us.getClass().getInterfaces(), userServiceInterceptor);
 
-        userServiceProxy.addUser(user);
+        proxyInstance.addUser(user);
 
         User user2 = new User();
         user2.setName("1");
-        userServiceProxy.addUser(user2);
+        proxyInstance.addUser(user2);
 
     }
 }

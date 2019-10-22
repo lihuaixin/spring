@@ -8,11 +8,14 @@ import com.lhx.spring.handler.RequestParamHandlerService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -164,6 +167,11 @@ public class DispatcherServlet extends HttpServlet {
                 resp.sendRedirect(contextPath + "/index.jsp");
                 return;
             }
+            if (path.endsWith(".jsp")) {
+                viewResolver(resp, path);
+                return;
+            }
+
             Method method = handMap.get(path);
             if (method == null) {
                 resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -173,9 +181,26 @@ public class DispatcherServlet extends HttpServlet {
             Object bean = beans.get("/" + split[1]);
             RequestParamHandlerService handlerService = (RequestParamHandlerService) beans.get("requestParamHandlerService");
             Object[] args = handlerService.handler(req, resp, method, beans);
-            method.invoke(bean, args);
+            Object returned = method.invoke(bean, args);
+            if (!"".equals(returned)) {
+                if (returned instanceof String) {
+                    if (((String) returned).endsWith(".jsp")) {
+                        viewResolver(resp, (String) returned);
+                    }
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void viewResolver(HttpServletResponse resp, String path) throws IOException {
+        String jspRootPath = this.getClass().getResource("/").getPath().substring(1, this.getClass().getResource("/").getPath().indexOf("/WEB-INF/classes"));
+        InputStream inputStream = new FileInputStream(jspRootPath + path);
+        ServletOutputStream outputStream = resp.getOutputStream();
+        byte[] data = new byte[1024];
+        while (inputStream.read(data) > -1) {
+            outputStream.write(data);
         }
     }
 

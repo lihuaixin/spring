@@ -25,4 +25,10 @@ public class OrderController {
         PrintWriter writer = response.getWriter();
         writer.write(orderService.queryOrder(orderId));
     }
+
+    @EnjoyRequestMapping("/queryOrderView")
+    public String queryOrderView(HttpServletResponse response, HttpServletRequest request, @EnjoyRequestParam("orderId") String orderId) throws IOException {
+        request.setAttribute("orderId", orderId);
+        return "/order.jsp";
+    }
 }

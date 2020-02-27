@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 public class JamesBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 
-        System.out.println("postProcessBeforeInitialization "+beanName);
+        System.out.println("JamesBeanPostProcessor.postProcessBeforeInitialization " + beanName);
         return bean;
     }
 
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("postProcessAfterInitialization "+beanName);
+        System.out.println("JamesBeanPostProcessor.postProcessAfterInitialization " + beanName);
         return bean;
     }
 }
